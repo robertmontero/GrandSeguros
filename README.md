@@ -3,5 +3,5 @@ Sistema de información y gestión de ingresos y egresos de la compañía asegur
 
 Integrantes:
 Lucas Restrepo Molina,
-Robert Montero Garces
-Cesar Pico
+Robert Montero Garces,
+Eduardo Malagón 
