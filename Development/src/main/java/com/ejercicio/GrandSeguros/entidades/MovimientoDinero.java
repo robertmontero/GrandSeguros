@@ -1,11 +1,25 @@
-package com.ejercicio.GrandSeguros;
+package com.ejercicio.GrandSeguros.entidades;
+
+import javax.persistence.*;
+
+@Entity
+@Table (name="Movimiento")
 
 public class MovimientoDinero {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long Id;
+
+    @Column (name="transaccionId")
     private Integer transaccionId;
+    @Column (name="monto")
     private Double monto;
+    @Column (name="tipoMov")
     private String tipoMov;
+    @Column (name="concepto")
     private String concepto;
+    @Column (name="nombreEmpleado")
     private String nombreEmpleado;
 
     public MovimientoDinero(Integer transaccionId, Double monto, String tipoMov, String concepto, String nombreEmpleado) {
@@ -15,7 +29,6 @@ public class MovimientoDinero {
         this.setConcepto(concepto);
         this.setNombreEmpleado(nombreEmpleado);
     }
-
 
     public Integer getTransaccionId() {
         return transaccionId;

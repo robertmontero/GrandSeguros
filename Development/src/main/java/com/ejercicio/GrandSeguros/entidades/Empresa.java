@@ -1,12 +1,29 @@
-package com.ejercicio.GrandSeguros;
+package com.ejercicio.GrandSeguros.entidades;
+
+import javax.persistence.*;
+
+@Entity
+@Table (name="empresa")
 
 public class Empresa {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long Id;
 
+    @Column (name="idEmpresa")
     private Integer idEmpresa;
+    @Column (name="nombreEmpresa")
     private String nombreEmpresa;
+    @Column (name="nit")
     private String nit;
+    @Column (name="direccion")
     private String direccion;
+    @Column (name="telefono")
     private String telefono;
+
+    public Empresa(){
+
+    }
 
     public Empresa(Integer idEmpresa, String nombreEmpresa, String nit, String direccion, String telefono) {
         this.idEmpresa = idEmpresa;
