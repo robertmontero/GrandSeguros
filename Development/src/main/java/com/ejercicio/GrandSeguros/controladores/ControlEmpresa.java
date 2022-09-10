@@ -2,42 +2,52 @@ package com.ejercicio.GrandSeguros.controladores;
 
 import com.ejercicio.GrandSeguros.entidades.Empresa;
 import com.ejercicio.GrandSeguros.servicios.ServiciosEmpresa;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class ControlEmpresa {
+public class ControlEmpresa{
 
-   /* @GetMapping("/vista1")
-    public String visualizar(){
-        return "prime vista";
+   ServiciosEmpresa servicesEmp;
+
+    public ControlEmpresa(ServiciosEmpresa servicesEmp){
+        this.servicesEmp = servicesEmp;
     }
 
-        @GetMapping("/vista2")
-    public Empresa ControlEmpresa(){
-        Empresa empresa1 = new Empresa(0,"0","0","0","0");
-        return empresa1;
-    }*/
-    ServiciosEmpresa services;
 
-    public ControlEmpresa(){
-        this.services = new ServiciosEmpresa();
-    }
     @GetMapping("/enterprises")
-    public List<Empresa> verEmpresas(){
-        return this.services.getListaEmpresas();
+    public List<Empresa> VerEmpresas(){
+        return this.servicesEmp.getListaEmpresas();
     }
 
-       @GetMapping("/enterprises/{id}")
-       public Empresa buscarId(@PathVariable int id){
-           return this.services.getEmpresa1();
+
+       @PostMapping("/enterprises")
+       public Empresa crearEmpresa(@RequestBody Empresa emp){
+        return this.servicesEmp.crearEmpresa(emp);
+
        }
 
+    @GetMapping("/enterprises/{id}")
+    public Empresa VerEmpresa(@PathVariable Long id){
+        return this.servicesEmp.getEmpresa(id);
+    }
 
-   }
+    //editar un registro
+    @PatchMapping("/enterprises/{id}")
+    public Empresa updateEmpresa(@PathVariable Long id, @RequestBody String updEmpresa){
+        return this.servicesEmp.updateEmpresa(id, updEmpresa);
+    }
+
+
+    @DeleteMapping("/enterprises/{id}")
+    public Empresa eliminarEmpresa(@PathVariable(value = "id") Long id){
+        return this.servicesEmp.eliminarEmpresa(id);
+    }
+
+
+}
 
 
 

@@ -1,19 +1,40 @@
 package com.ejercicio.GrandSeguros.servicios;
 
-import com.ejercicio.GrandSeguros.entidades.Empleado;
+import com.ejercicio.GrandSeguros.entidades.Empresa;
 import com.ejercicio.GrandSeguros.entidades.MovimientoDinero;
+import com.ejercicio.GrandSeguros.repositorios.repositorioMovimiento;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class ServiciosMovimiento {
 
 
-    MovimientoDinero movimiento1;
+   private repositorioMovimiento repositoriomovi;
 
-    public ServiciosMovimiento() {
-        this.movimiento1 = new MovimientoDinero(1, 100.0, "0", "0", "0");
+    List<MovimientoDinero> listaMovimiento;
+
+    public ServiciosMovimiento(repositorioMovimiento repositoriomovi) {
+        this.repositoriomovi = repositoriomovi;
     }
 
-    public MovimientoDinero getMovimiento1() {
-        return movimiento1;
+    public List<MovimientoDinero> getListaMovimiento() {
+        return this.repositoriomovi.findAll();
     }
 
+    public MovimientoDinero crearMovimiento(MovimientoDinero nuevoMovimiento){
+        return this.repositoriomovi.save(nuevoMovimiento);
+
+    }
+
+    public MovimientoDinero getMovimiento(Long id){
+        return this.repositoriomovi.findById(id).get();
+    }
+
+    public MovimientoDinero eliminarMovimiento(Long id){
+        MovimientoDinero MovimientoActual = repositoriomovi.findById(id).orElseThrow();
+        this.repositoriomovi.deleteById(id);
+        return MovimientoActual;
+    }
 }

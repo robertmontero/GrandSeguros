@@ -9,10 +9,9 @@ public class MovimientoDinero {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long Id;
+    private long transaccionId;
+    //@Column (name="transaccionId")
 
-    @Column (name="transaccionId")
-    private Integer transaccionId;
     @Column (name="monto")
     private Double monto;
     @Column (name="tipoMov")
@@ -22,6 +21,9 @@ public class MovimientoDinero {
     @Column (name="nombreEmpleado")
     private String nombreEmpleado;
 
+    public MovimientoDinero() {
+    }
+
     public MovimientoDinero(Integer transaccionId, Double monto, String tipoMov, String concepto, String nombreEmpleado) {
         this.setTransaccionId(transaccionId);
         this.setMonto(monto);
@@ -30,7 +32,7 @@ public class MovimientoDinero {
         this.setNombreEmpleado(nombreEmpleado);
     }
 
-    public Integer getTransaccionId() {
+    public Long getTransaccionId() {
         return transaccionId;
     }
 

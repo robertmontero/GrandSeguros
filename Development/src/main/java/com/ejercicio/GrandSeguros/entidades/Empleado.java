@@ -24,12 +24,13 @@ public class Empleado {
     }
 
     public Empleado(String numIdentificacion, String nombreEmpleado, String correoEmpleado, String nombreEmpresa, String rolEmpleado) {
-        this.setNumIdentificacion(numIdentificacion);
-        this.setNombreEmpleado(nombreEmpleado);
-        this.setCorreoEmpleado(correoEmpleado);
-        this.setNombreEmpresa(nombreEmpresa);
-        this.setRolEmpleado(rolEmpleado);
+        this.numIdentificacion = numIdentificacion;
+        this.nombreEmpleado= nombreEmpleado;
+        this.correoEmpleado= correoEmpleado;
+        this.nombreEmpresa= nombreEmpresa;
+        this.rolEmpleado= rolEmpleado;
     }
+
 
 
     public String getNumIdentificacion() {

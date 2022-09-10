@@ -8,10 +8,9 @@ import javax.persistence.*;
 public class Empresa {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long Id;
+    //@Column (name="idEmpresa")
+    private long idEmpresa;
 
-    @Column (name="idEmpresa")
-    private Integer idEmpresa;
     @Column (name="nombreEmpresa")
     private String nombreEmpresa;
     @Column (name="nit")
@@ -25,7 +24,7 @@ public class Empresa {
 
     }
 
-    public Empresa(Integer idEmpresa, String nombreEmpresa, String nit, String direccion, String telefono) {
+    public Empresa(Long idEmpresa, String nombreEmpresa, String nit, String direccion, String telefono) {
         this.idEmpresa = idEmpresa;
         this.nombreEmpresa = nombreEmpresa;
         this.nit = nit;
@@ -33,11 +32,8 @@ public class Empresa {
         this.telefono = telefono;
     }
 
-    public Integer getIdEmpresa() {
-        return idEmpresa;
-    }
+        public void setIdEmpresa(Long idEmpresa) {
 
-    public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 
