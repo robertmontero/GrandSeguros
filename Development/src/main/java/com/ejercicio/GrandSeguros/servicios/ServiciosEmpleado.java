@@ -4,8 +4,11 @@ import com.ejercicio.GrandSeguros.entidades.Empleado;
 import com.ejercicio.GrandSeguros.entidades.Empresa;
 import com.ejercicio.GrandSeguros.repositorios.repositorioEmpleado;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ServiciosEmpleado {
@@ -29,6 +32,16 @@ public class ServiciosEmpleado {
 
     public Empleado getEmpleado(Long id){
         return this.repositorioUsu.findById(id).get();
+    }
+
+    public Empleado updateEmpleado(Long id, Map<Object, Object> objectMap) {
+        Empleado EmpleadoActual = repositorioUsu.findById(id).get();
+        objectMap.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(Empleado.class, (String) key);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, EmpleadoActual, value);
+        });
+        return repositorioUsu.save(EmpleadoActual);
     }
 
     public Empleado eliminarEmpleado(Long id){

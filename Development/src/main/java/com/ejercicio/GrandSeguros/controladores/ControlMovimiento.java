@@ -6,6 +6,7 @@ import com.ejercicio.GrandSeguros.servicios.ServiciosMovimiento;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ControlMovimiento {
@@ -30,6 +31,11 @@ public class ControlMovimiento {
     @GetMapping("/movements/{id}")
     public MovimientoDinero VerMovimiento(@PathVariable Long id){
         return this.servicesMovimiento.getMovimiento(id);
+    }
+
+    @PatchMapping("/movements/{id}")
+    public MovimientoDinero updateMovimiento(@PathVariable Long id, @RequestBody Map<Object, Object> objectMap){
+        return this.servicesMovimiento.updateMovimiento(id, objectMap);
     }
 
     @DeleteMapping("/movements/{id}")

@@ -6,6 +6,7 @@ import com.ejercicio.GrandSeguros.servicios.ServiciosEmpleado;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ControlEmpleado {
@@ -32,6 +33,11 @@ public class ControlEmpleado {
     @GetMapping("/users/{id}")
     public Empleado VerUsuario(@PathVariable Long id){
         return this.servicesEmpleado.getEmpleado(id);
+    }
+
+    @PatchMapping("/users/{id}")
+    public Empleado updateEmpleado(@PathVariable Long id, @RequestBody Map<Object, Object> objectMap){
+        return this.servicesEmpleado.updateEmpleado(id, objectMap);
     }
 
     @DeleteMapping("/users/{id}")

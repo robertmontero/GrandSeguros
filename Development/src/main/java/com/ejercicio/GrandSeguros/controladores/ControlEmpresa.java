@@ -2,10 +2,13 @@ package com.ejercicio.GrandSeguros.controladores;
 
 import com.ejercicio.GrandSeguros.entidades.Empresa;
 import com.ejercicio.GrandSeguros.servicios.ServiciosEmpresa;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+
 
 @RestController
 public class ControlEmpresa{
@@ -34,10 +37,10 @@ public class ControlEmpresa{
         return this.servicesEmp.getEmpresa(id);
     }
 
-    //editar un registro
+
     @PatchMapping("/enterprises/{id}")
-    public Empresa updateEmpresa(@PathVariable Long id, @RequestBody String updEmpresa){
-        return this.servicesEmp.updateEmpresa(id, updEmpresa);
+    public Empresa updateEmpresa(@PathVariable Long id, @RequestBody Map<Object, Object> objectMap){
+        return this.servicesEmp.updateEmpresa(id, objectMap);
     }
 
 

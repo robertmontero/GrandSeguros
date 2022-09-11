@@ -3,9 +3,13 @@ package com.ejercicio.GrandSeguros.servicios;
 import com.ejercicio.GrandSeguros.entidades.Empresa;
 import com.ejercicio.GrandSeguros.repositorios.repositorioEmpresa;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class ServiciosEmpresa {
 
@@ -29,26 +33,17 @@ public class ServiciosEmpresa {
         return this.repositorioEmp.findById(id).get();
         }
 
-    public Empresa updateEmpresa(Long id, String emp) {
+    public Empresa updateEmpresa(Long id, Map<Object, Object>objectMap) {
         Empresa EmpresaActual = repositorioEmp.findById(id).get();
-        EmpresaActual.setNit(EmpresaActual.getNit());
-        EmpresaActual.setNombreEmpresa(EmpresaActual.getNombreEmpresa());
-        EmpresaActual.setDireccion(EmpresaActual.getDireccion());
-        EmpresaActual.setTelefono(EmpresaActual.getTelefono());
-        return this.repositorioEmp.save(EmpresaActual);
+        objectMap.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(Empresa.class, (String) key);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, EmpresaActual, value);
+                });
+        return repositorioEmp.save(EmpresaActual);
     }
 
-    //método para actualizar
-    /*public Empresa updateEmpresa(Long id, Empresa emp){
-        Empresa EmpresaActual = repositorioEmp.findById(id).get();
-        EmpresaActual.setNit(emp.getNit());
-        EmpresaActual.setNombreEmpresa(emp.getNombreEmpresa());
-        EmpresaActual.setDireccion(emp.getDireccion());
-        EmpresaActual.setTelefono(emp.getTelefono());
-        return this.repositorioEmp.save(EmpresaActual);
-    }*/
-
-       public Empresa eliminarEmpresa(Long id){
+        public Empresa eliminarEmpresa(Long id){
         Empresa empresaActual = repositorioEmp.findById(id).orElseThrow();
         this.repositorioEmp.deleteById(id);
         return empresaActual;
