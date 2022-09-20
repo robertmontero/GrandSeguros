@@ -1,14 +1,30 @@
-package com.ejercicio.GrandSeguros;
+package com.ejercicio.GrandSeguros.entidades;
+
+import javax.persistence.*;
+
+@Entity
+@Table (name="empresa")
 
 public class Empresa {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    //@Column (name="idEmpresa")
+    private long idEmpresa;
 
-    private Integer idEmpresa;
+    @Column (name="nombreEmpresa")
     private String nombreEmpresa;
+    @Column (name="nit")
     private String nit;
+    @Column (name="direccion")
     private String direccion;
+    @Column (name="telefono")
     private String telefono;
 
-    public Empresa(Integer idEmpresa, String nombreEmpresa, String nit, String direccion, String telefono) {
+    public Empresa(){
+
+    }
+
+    public Empresa(Long idEmpresa, String nombreEmpresa, String nit, String direccion, String telefono) {
         this.idEmpresa = idEmpresa;
         this.nombreEmpresa = nombreEmpresa;
         this.nit = nit;
@@ -16,11 +32,8 @@ public class Empresa {
         this.telefono = telefono;
     }
 
-    public Integer getIdEmpresa() {
-        return idEmpresa;
-    }
+        public void setIdEmpresa(Long idEmpresa) {
 
-    public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 

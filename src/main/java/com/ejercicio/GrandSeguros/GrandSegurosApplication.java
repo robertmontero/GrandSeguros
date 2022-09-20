@@ -1,11 +1,21 @@
 package com.ejercicio.GrandSeguros;
 
-//@SpringBootApplication
+import com.ejercicio.GrandSeguros.entidades.Empleado;
+import com.ejercicio.GrandSeguros.entidades.Empresa;
+import com.ejercicio.GrandSeguros.entidades.MovimientoDinero;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+
+
 public class GrandSegurosApplication {
 
 	public static void main(String[] args) {
 
-		Empresa emp1 = new Empresa(0,"0","0","0","0");
+		SpringApplication.run(GrandSegurosApplication.class, args);
+
+		/*Empresa emp1 = new Empresa(0,"0","0","0","0");
 
 		Empleado usu1 = new Empleado("1","usuario","usuario@usuario.com","emp", "operativo");
 
@@ -60,11 +70,10 @@ public class GrandSegurosApplication {
 		System.out.println("Concepto:" + Mov1.getConcepto());
 		System.out.println("Tipo:" + Mov1.getTipoMov());
 		System.out.println("Monto:" + Mov1.getMonto());
-		System.out.println("Vendedor:" + Mov1.getNombreEmpleado());
+		System.out.println("Vendedor:" + Mov1.getNombreEmpleado());*/
 
 
 
-		//SpringApplication.run(GrandSegurosApplication.class, args);
 	}
 
 }
