@@ -20,11 +20,6 @@ public class Empleado {
     @Column (name="rolEmpleado")
     private String rolEmpleado;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name="idEmpresa")
-    private Empleado empleado;
-
-
     public Empleado() {
     }
 

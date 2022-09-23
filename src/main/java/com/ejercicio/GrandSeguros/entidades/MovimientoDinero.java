@@ -21,11 +21,7 @@ public class MovimientoDinero {
     @Column (name="nombreEmpleado")
     private String nombreEmpleado;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name="id")
-    private MovimientoDinero movimientos;
-
-   public MovimientoDinero() {
+    public MovimientoDinero() {
     }
 
     public MovimientoDinero(Integer transaccionId, Double monto, String tipoMov, String concepto, String nombreEmpleado) {
