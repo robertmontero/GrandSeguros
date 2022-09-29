@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Document</title>
+
+</head>
+<body>
+
+<main class="main">
+
+    <div class="px-4 py-4 mx-5 my-5 text-center">
+        <img src="img/112.jpg" class="d-block mx-auto my-auto mb-4" height="150" />
+    </div>
+        <div class="text-center row g-4 py-5 row-cols-1 row-cols-lg-4" >
+            <div>
+                <input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Gnome-address-book-new.svg/48px-Gnome-address-book-new.svg.png" class="boton" onclick="window.open('http://localhost:8080/enterprises/', '_self')">
+                <p >Gestión Empresas </p>
+
+
+            </div>
+
+            <div>
+                <input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gnome-stock_person.svg/48px-Gnome-stock_person.svg.png" class="boton" onclick="window.open('http://localhost:8080/users/', '_self')">
+                <p >Gestión Usuarios </p>
+            </div>
+
+            <div>
+                <input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Emblem-money.svg/48px-Emblem-money.svg.png" class="boton" onclick="window.open('http://localhost:8080/movements/', '_self')">
+                <p>Movimientos</p>
+            </div>
+
+
+
+            <div sec:authorize="isAuthenticated()" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+
+                <a th:href="@{/logout}"  class="w-50 h-50 btn btn-lg btn-primary px-2 py-2  " type="button">salir</a>
+
+
+            </div>
+
+            <!--<div sec:authorize="isAuthenticated()">
+                <input th:href="@{/logout}" type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Gnome-application-exit.svg/48px-Gnome-application-exit.svg.png" class="boton"  >
+                <p>Salir</p>
+            </div>-->
+
+
+        </div>
+
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+</body>
+</html>
