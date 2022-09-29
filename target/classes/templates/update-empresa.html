@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>Crear Empresa </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+
+
+</head>
+<body class="bg-light">
+
+<div class="container">
+    <main>
+        <div class="py-3 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Gnome-bookmark-new.svg/240px-Gnome-bookmark-new.svg.png" class="d-block mx-auto my-auto mb-4" height="70" />
+            <h2>Crear Empresa</h2>
+            <p class="lead">Ingrese los datos de la empresa a actualizar.</p>
+        </div>
+
+        <div  th:each="buscarEmpresa: ${buscarEmpresa}=" class=col-md-7 col-lg-12>
+            <h4 class="mb-3">Datos Empresa</h4>
+            <form th:action="@{/enterprises/{id}(id=${buscarEmpresa.nit}" th:method="put"  class="needs-validation" novalidate>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="razonsocial" class="form-label">Razón Social</label>
+                        <input th:field="*{buscarEmpresa.nombreEmpresa}" type="text" class="form-control" id="razonsocial" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Nombre de Empresa es requerido.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="nitempresa" class="form-label">NIT</label>
+                        <input th:field="*{buscarEmpresa.nit}" type="text" class="form-control" id="nitempresa" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Nit es requerido.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="mail" class="form-label">Email</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">@</span>
+                            <input th:field="*{buscarEmpresa.correo}" type="email" class="form-control" id="mail" placeholder="you@example.com" required>
+                            <div class="invalid-feedback">
+                                Correo es requerido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="telephone" class="form-label">Teléfono </label>
+                        <input th:field="*{buscarEmpresa.telefono}" type="text" class="form-control" id="telephone" placeholder="310-222-5555">
+                        <div class="invalid-feedback">
+                            Número telefónico valido..
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address" class="form-label">Dirección</label>
+                        <input th:field="*{buscarEmpresa.direccion}" type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                        <div class="invalid-feedback">
+                            Dirección requerida.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address2" class="form-label">Dirección adicional <span class="text-muted">(Optional)</span></label>
+                        <input th:field="*{buscarEmpresa.direccion2}" type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="country" class="form-label">País</label>
+                        <select th:field="*{buscarEmpresa.pais}" class="form-select" id="country" required>
+                            <option value="">Choose...</option>
+                            <option th:value="'United States'" th:text="'United States'"></option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="state" class="form-label">Ciudad</label>
+                        <select th:field="*{buscarEmpresa.ciudad}" class="form-select" id="state" required>
+                            <option value="">Choose...</option>
+                            <option th:value="'California'" th:text="California"></option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please provide a valid state.
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="zip" class="form-label">Zip</label>
+                        <input th:field="*{buscarEmpresa.codigozip}" type="text" class="form-control" id="zip" placeholder="">
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <button class="btn btn-primary " type="submit">Actualizar Empresa</button>
+                        <a href="/enterprises/" class="btn btn-primary " type="button" >Atrás</a>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 Grand Seguros</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+
+
+<script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
