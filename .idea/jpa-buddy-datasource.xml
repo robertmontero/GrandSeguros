@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="3eb7198f-a6ae-442f-a7cf-7cda493565bb" name="GrandSeguros" url="jdbc:postgresql://db.wcnrmkjzusllteedkazu.supabase.co/postgres" driverClass="org.postgresql.Driver" />
+      <data-source id="254b8d12-5327-4ec5-b74f-79363e4cc9a6" name="postgres" url="jdbc:postgresql://db.wcnrmkjzusllteedkazu.supabase.co/postgres" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
