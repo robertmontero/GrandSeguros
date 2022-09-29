@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface repositorioEmpleado extends JpaRepository<Empleado,Long> {
 
 
-
-
+    Empleado findByemail(String email);
 }

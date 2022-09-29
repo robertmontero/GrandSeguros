@@ -30,6 +30,26 @@ public class ServiciosEmpleado {
         return this.repositorioUsu.save(nuevoEmpleado);
     }
 
+
+    public Empleado findUserByEmail(String email){
+        return this.repositorioUsu.findByemail(email);
+
+    }
+
+    public Empleado getOrCreateUser(Map<String, Object> userData){
+        String email = (String) userData.get("email");
+        Empleado empleado = findUserByEmail(email);
+        if(empleado==null){
+
+        String nombreEmpleado = (String) userData.get("name");
+        String auth0Id = (String) userData.get("sub");
+
+
+        }
+        System.out.println(empleado.getEmail());
+    return empleado;
+    }
+
     public Empleado getEmpleado(Long id){
         return this.repositorioUsu.findById(id).get();
     }

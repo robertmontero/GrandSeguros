@@ -1,9 +1,6 @@
 package com.ejercicio.GrandSeguros.entidades;
 
-import com.ejercicio.GrandSeguros.servicios.ServiciosEmpresa;
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table (name="empresa")
@@ -61,6 +58,11 @@ public class Empresa {
 
         public void setIdEmpresa(Long idEmpresa) {
 
+        this.idEmpresa = idEmpresa;
+
+    }
+
+    public void setIdEmpresa(long idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 
@@ -135,4 +137,6 @@ public class Empresa {
     public void setCodigozip(Integer codigozip) {
         this.codigozip = codigozip;
     }
+
+
 }

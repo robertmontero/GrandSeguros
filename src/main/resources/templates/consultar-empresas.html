@@ -21,6 +21,8 @@
       <div th:each="empresas:${empresas}"  class="card" style="width: 18rem;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Gnome-applications-office.svg/48px-Gnome-applications-office.svg.png" class="d-block mx-auto my-5 mb-4" alt="Empresa" height="50">
         <div class="card-body my-1">
+
+
            <label>Nombre Empresa:</label>
            <h5 th:text="${empresas.nombreEmpresa}"  class="card-title"></h5>
          <label>NIT:</label>
@@ -39,15 +41,15 @@
           <label>Zip:</label>
           <p  th:text="${empresas.codigozip}"   class="card-text"></p>
 
-          <div class="d-flex gap-1 justify-content-center">
-            <form th:action="@{/empresas/{id}(id=${empresas.nit})}" th:method="get">
-              <button type="submit" class="btn btn-primary">Editar</button>
-            </form>
+            <div class="d-flex gap-1 justify-content-center">
+                <form th:action="@{/enterprises/{id}(id=${empresas.nit})}" th:method="get">
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </form>
 
-            <form th:action="@{/empresas/{id}(id=${empresas.nit})}" th:method="delete">
-              <button type="submit" class="btn btn-danger">Eliminar</button>
-            </form>
-          </div>
+                <form th:action="@{/enterprises/{id}(id=${empresas.nit})}" th:method="delete">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
 
 
 

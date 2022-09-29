@@ -99,7 +99,7 @@
             <label for="mail" class="form-label">Email</label>
             <div class="input-group has-validation">
               <span class="input-group-text">@</span>
-              <input th:field="*{correoEmpleado}" type="email" class="form-control" id="mail" placeholder="you@example.com" required>
+              <input th:field="*{email}" type="text" class="form-control" id="mail" placeholder="you@example.com" required>
               <div class="invalid-feedback">
                 Correo es requerido.
               </div>
@@ -118,21 +118,31 @@
             </div>
           </div>
 
-          <div class="col-md-5">
-            <label for="empresa" class="form-label">Empresa</label>
-            <!--<select th:field="*{nombreEmpresa}" class="form-select" id="empresa" required>-->
+          <label for="empresa" class="form-label">Empresa</label>
+          <!--<select th:field="*{nombreEmpresa}" class="form-select" id="empresa" required>
+          <form th:action="@{/pacientes/{id}(id=${pacientes.documentoIdentidad})}" th:method="get">-->
 
-               <select th:each="empresas:${empresa}" class="form-select" id="empresa" required>
-                <option th:value="${empleado.empresa.nombreEmpresa}" th:text=${empleado.empresa.nombreEmpresa}"></option>
+          <div th:each="empresas:${empresas}" th:method="get" >
+            <select th:object="${empresas}"  th:field="*{nombreEmpresa}" class="form-control" id="empresa">
+              <option th:each="dropDownItem : ${nombreEmpresaList}" th:value="${dropDownItem.getIdPermission()}"
+                      th:text="${dropDownItem.toString()}"> </option>
 
-               <option value="">Choose...</option>
-
-             <!-- <option th:value=*{nombreEmpresa} th:text=*{nombreEmpresa}></option>-->
             </select>
+          </div>
+
+          <!-- <select th:each="empresa:${empresas}" class="form-select" id="empresa" required>
+            <option th:value="${empleado.empresa.nombreEmpresa}" th:text=${empleado.empresa.nombreEmpresa}"></option>
+
+           <option value="">Choose...</option>-->
+
+          <!-- <option th:value=*{nombreEmpresa} th:text=*{nombreEmpresa}></option>
+         </select>-->
+
+          <div class="col-md-5">
             <div class="invalid-feedback">
               Please select a valid country.
             </div>
-          </div>
+
 
 
 
@@ -142,7 +152,7 @@
           </div>
 
         </div>
-
+        </div>
       </form>
     </div>
 

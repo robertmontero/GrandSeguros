@@ -9,16 +9,20 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long Id;
-    @Column (name="numIdentificacion")
+    @Column (name="numIdentificacion", unique = true)
     private String numIdentificacion;
     @Column (name="nombreEmpleado")
     private String nombreEmpleado;
-    @Column (name="correoEmpleado")
-    private String correoEmpleado;
+
+    @Column (name="email",unique = true)
+    private String email;
     @Column (name="nombreEmpresa")
     private String nombreEmpresa;
     @Column (name="rolEmpleado")
     private String rolEmpleado;
+
+    @Column (name="auth0Id", unique = true )
+    private String auth0Id;
 
     @ManyToOne(optional = true)
     @JoinColumn(name="idEmpresa")
@@ -28,12 +32,13 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String numIdentificacion, String nombreEmpleado, String correoEmpleado, String nombreEmpresa, String rolEmpleado) {
+    public Empleado(String numIdentificacion, String nombreEmpleado, String email, String nombreEmpresa, String rolEmpleado, String auth0Id) {
         this.numIdentificacion = numIdentificacion;
         this.nombreEmpleado= nombreEmpleado;
-        this.correoEmpleado= correoEmpleado;
+        this.email= email;
         this.nombreEmpresa= nombreEmpresa;
         this.rolEmpleado= rolEmpleado;
+        this.auth0Id= auth0Id;
     }
 
 
@@ -54,12 +59,12 @@ public class Empleado {
         this.nombreEmpleado = nombreEmpleado;
     }
 
-    public String getCorreoEmpleado() {
-        return correoEmpleado;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreoEmpleado(String correoEmpleado) {
-        this.correoEmpleado = correoEmpleado;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNombreEmpresa() {
@@ -76,6 +81,14 @@ public class Empleado {
 
     public void setRolEmpleado(String rolEmpleado) {
         this.rolEmpleado = rolEmpleado;
+    }
+
+    public String getAuth0Id() {
+        return auth0Id;
+    }
+
+    public void setAuth0Id(String auth0Id) {
+        this.auth0Id = auth0Id;
     }
 }
 

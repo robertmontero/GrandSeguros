@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -16,7 +16,7 @@
     <div class="px-4 py-4 mx-5 my-5 text-center">
         <img src="img/112.jpg" class="d-block mx-auto my-auto mb-4" height="150" />
     </div>
-        <div class="text-center row g-4 py-5 row-cols-1 row-cols-lg-3" >
+        <div class="text-center row g-4 py-5 row-cols-1 row-cols-lg-4" >
             <div>
                 <input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Gnome-address-book-new.svg/48px-Gnome-address-book-new.svg.png" class="boton" onclick="window.open('http://localhost:8080/enterprises/', '_self')">
                 <p >Gestión Empresas </p>
@@ -33,6 +33,20 @@
                 <input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Emblem-money.svg/48px-Emblem-money.svg.png" class="boton" onclick="window.open('http://localhost:8080/movements/', '_self')">
                 <p>Movimientos</p>
             </div>
+
+
+
+            <div sec:authorize="isAuthenticated()" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+
+                <a th:href="@{/logout}"  class="w-50 h-50 btn btn-lg btn-primary px-2 py-2  " type="button">salir</a>
+
+
+            </div>
+
+            <!--<div sec:authorize="isAuthenticated()">
+                <input th:href="@{/logout}" type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Gnome-application-exit.svg/48px-Gnome-application-exit.svg.png" class="boton"  >
+                <p>Salir</p>
+            </div>-->
 
 
         </div>

@@ -36,10 +36,10 @@ public class ControlEmpresa{
 
        }
 
-    @GetMapping("/enterprises/{id}")
+    /*@GetMapping("/enterprises/{id}")
     public Empresa VerEmpresa(@PathVariable Long id){
         return this.servicesEmp.getEmpresa(id);
-    }
+    }*/
 
 
     @PatchMapping("/enterprises/{id}")
